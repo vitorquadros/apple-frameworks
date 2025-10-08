@@ -13,25 +13,32 @@ struct FrameworkGridView: View {
                                GridItem(.flexible())]
     
     var body: some View {
-        LazyVGrid(columns: columns) {
-            ForEach(MockData.frameworks) { framework in
-                FrameworkTitleView(name: framework.name, imageName: framework.imageName)
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: columns) {
+                    ForEach(MockData.frameworks) { framework in
+                        FrameworkTitleView(framework)
+                    }
+                }
             }
-            
+            .navigationTitle("Apple Frameworks")
         }
     }
 }
 
 struct FrameworkTitleView: View {
-    let name: String
-    let imageName: String
+    let framework: Framework
+    
+    init(_ framework: Framework) {
+        self.framework = framework
+    }
     
     var body: some View {
         VStack(spacing: 6) {
-            Image(imageName)
+            Image(framework.imageName)
                 .resizable()
                 .frame(width: 90, height: 90)
-            Text(name)
+            Text(framework.name)
                 .font(.title2)
                 .fontWeight(.semibold)
                 .scaledToFit()
