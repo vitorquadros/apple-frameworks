@@ -14,12 +14,9 @@ struct FrameworkGridView: View {
     
     var body: some View {
         LazyVGrid(columns: columns) {
-            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
-            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
-            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
-            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
-            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
-            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
+            ForEach(MockData.frameworks) { framework in
+                FrameworkTitleView(name: framework.name, imageName: framework.imageName)
+            }
             
         }
     }
