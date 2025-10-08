@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct FrameworkGridView: View {
+    let columns: [GridItem] = [GridItem(.flexible()),
+                               GridItem(.flexible()),
+                               GridItem(.flexible())]
+    
     var body: some View {
-        FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
+        LazyVGrid(columns: columns) {
+            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
+            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
+            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
+            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
+            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
+            FrameworkTitleView(name: "CloudKit", imageName: "cloudkit")
+            
+        }
     }
 }
 
