@@ -9,10 +9,7 @@ import SwiftUI
 
 struct DetailFrameworkView: View {
     let framework: Framework
-    
-    init(_ framework: Framework) {
-        self.framework = framework
-    }
+    @Binding var isShowingDetailView: Bool
     
     var body: some View {
         NavigationView {
@@ -21,7 +18,7 @@ struct DetailFrameworkView: View {
                     Spacer()
                     
                     Button {
-                        
+                        isShowingDetailView = false
                     } label: {
                         Image(systemName: "xmark")
                             .foregroundColor(Color(.label))
@@ -53,5 +50,6 @@ struct DetailFrameworkView: View {
 }
 
 #Preview {
-    DetailFrameworkView(MockData.frameworks[0])
+    DetailFrameworkView(framework: MockData.frameworks[0],
+                        isShowingDetailView: .constant(false))
 }

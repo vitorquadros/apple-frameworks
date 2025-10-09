@@ -31,7 +31,8 @@ struct FrameworkGridView: View {
             .navigationTitle("Apple Frameworks")
             .sheet(isPresented: $vm.isShowingDetailView) {
                 if let selectedFramework = vm.selectedFramework {
-                    DetailFrameworkView(selectedFramework)
+                    DetailFrameworkView(framework: selectedFramework,
+                                        isShowingDetailView: $vm.isShowingDetailView)
                 } else {
                     EmptyView()
                 }
