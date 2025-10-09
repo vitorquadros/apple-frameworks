@@ -15,10 +15,10 @@ struct FrameworkTitleView: View {
     }
     
     var body: some View {
-        VStack(spacing: 6) {
+        HStack(spacing: 6) {
             Image(framework.imageName)
                 .resizable()
-                .frame(width: 90, height: 90)
+                .frame(width: 70, height: 70)
             Text(framework.name)
                 .font(.title2)
                 .fontWeight(.semibold)
@@ -26,6 +26,7 @@ struct FrameworkTitleView: View {
                 .minimumScaleFactor(0.6)
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
+                .padding()
         }
     }
 }
