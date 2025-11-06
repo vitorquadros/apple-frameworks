@@ -17,7 +17,7 @@ struct FrameworkGridView: View {
                     NavigationLink(
                         destination: DetailFrameworkView(
                             vm: FrameworkDetailViewModel(
-                                framework: vm.selectedFramework!,
+                                framework: framework,
                                 isShowingDetailView: $vm.isShowingDetailView
                             )
                         )
