@@ -8,32 +8,29 @@
 import SwiftUI
 
 struct DetailFrameworkView: View {
-    let framework: Framework
-    @Binding var isShowingDetailView: Bool
-    
-    @State private var isShowingSafariView: Bool = false
+    @ObservedObject var vm: FrameworkDetailViewModel
     
     var body: some View {
         NavigationView {
             VStack {
                 Spacer()
                 
-                FrameworkTitleView(framework)
+                FrameworkTitleView(vm.framework)
                 
-                Text(framework.description)
+                Text(vm.framework.description)
                     .font(.body)
                     .padding()
                 
                 Spacer()
                 
                 Button {
-                    isShowingSafariView = true
+                    vm.isShowingSafariView = true
                 } label: {
                     AFButton("Learn More")
                 }
             }
-            .sheet(isPresented: $isShowingSafariView) {
-                if let url = URL(string: framework.urlString) {
+            .sheet(isPresented: $vm.isShowingSafariView) {
+                if let url = URL(string: vm.framework.urlString) {
                     SafariView(url: url)
                 } else {
                     SafariView(url: URL(string: "https://developer.apple.com")!)
@@ -44,6 +41,5 @@ struct DetailFrameworkView: View {
 }
 
 #Preview {
-    DetailFrameworkView(framework: MockData.frameworks[0],
-                        isShowingDetailView: .constant(false))
+    DetailFrameworkView(vm: FrameworkDetailViewModel(framework: MockData.sampleFramework, isShowingDetailView: .constant(false)))
 }

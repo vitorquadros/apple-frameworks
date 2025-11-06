@@ -11,15 +11,19 @@ struct FrameworkGridView: View {
     @StateObject var vm = FrameworkGridViewModel()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(MockData.frameworks) { framework in
                     NavigationLink(
                         destination: DetailFrameworkView(
-                            framework: framework,
-                            isShowingDetailView: $vm.isShowingDetailView)) {
-                                FrameworkTitleView(framework)
-                            }
+                            vm: FrameworkDetailViewModel(
+                                framework: vm.selectedFramework!,
+                                isShowingDetailView: $vm.isShowingDetailView
+                            )
+                        )
+                    ) {
+                        FrameworkTitleView(framework)
+                    }
                 }
             }
             .navigationTitle("Apple Frameworks")
