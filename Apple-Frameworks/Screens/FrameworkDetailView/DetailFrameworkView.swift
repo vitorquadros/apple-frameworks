@@ -23,19 +23,23 @@ struct DetailFrameworkView: View {
                 
                 Spacer()
                 
-                Button {
-                    vm.isShowingSafariView = true
-                } label: {
+                Link(destination: URL(string: vm.framework.urlString) ?? URL(string: "https://developer.apple.com")!) {
                     AFButton("Learn More")
                 }
+                
+//                Button {
+//                    vm.isShowingSafariView = true
+//                } label: {
+//                    AFButton("Learn More")
+//                }
             }
-            .sheet(isPresented: $vm.isShowingSafariView) {
-                if let url = URL(string: vm.framework.urlString) {
-                    SafariView(url: url)
-                } else {
-                    SafariView(url: URL(string: "https://developer.apple.com")!)
-                }
-            }
+//            .sheet(isPresented: $vm.isShowingSafariView) {
+//                if let url = URL(string: vm.framework.urlString) {
+//                    SafariView(url: url)
+//                } else {
+//                    SafariView(url: URL(string: "https://developer.apple.com")!)
+//                }
+//            }
         }
     }
 }
